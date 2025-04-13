@@ -6,7 +6,25 @@ Adicionalmente permite procesar el ticket, eliminarlo de los datos y pasar al si
 
 Este programa utiliza una estructura de datos dinamica (array) para manejar las listas de tickets segun su prioridad (Alta, Media, Baja), cabe destacar que la implementacion de arraylist se realiza mediante el TDA "List" , mejorando la modularidad del código. EL funcionamiento de proceso de datos se maneja con el orden FIFO(First In First Out).
 
-Para acceder a este Programa se debe ingresar al Repositorio de GitHUB.
+### Requisitos previos:
+
+- Tener instalado [Visual Studio Code](https://code.visualstudio.com/).
+- Instalar la extensión **C/C++** (Microsoft).
+- Tener instalado un compilador de C (como **gcc**). Si estás en Windows, se recomienda instalar [MinGW](https://www.mingw-w64.org/) o utilizar el entorno [WSL](https://learn.microsoft.com/en-us/windows/wsl/).
+
+### Pasos para compilar y ejecutar:
+
+1. **Descarga y descomprime el** archivo `.zip` en una carpeta de tu elección.
+2. **Abre el proyecto en Visual Studio Code**
+    - Inicia Visual Studio Code.
+    - Selecciona `Archivo > Abrir carpeta...` y elige la carpeta donde descomprimiste el proyecto.
+3. **Compila el código**
+    - Abre el archivo principal (por ejemplo, `codigo.c`).
+    - Abre la terminal integrada (`Terminal > Nueva terminal`).
+    - En la terminal, selecciona gitbash, compila el programa con el siguiente comando:
+      | gcc codigo.c arraylist.c -o programa |
+4. **Ejecutar Programa**
+    - Usa en la misma terminal el siguiente comando : | ./programa |
 
 
 
