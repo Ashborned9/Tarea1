@@ -13,7 +13,7 @@ Este programa utiliza una estructura de datos dinamica (array) para manejar las 
 - Tener instalado un compilador de C (como **gcc**). Si estás en Windows, se recomienda instalar [MinGW](https://www.mingw-w64.org/) o utilizar el entorno [WSL](https://learn.microsoft.com/en-us/windows/wsl/).
 
 ### Pasos para compilar y ejecutar:
-
+0. **Entrar al link del repositorio** https://github.com/Ashborned9/Tarea1.git
 1. **Descarga y descomprime el** archivo `.zip` en una carpeta de tu elección.
 2. **Abre el proyecto en Visual Studio Code**
     - Inicia Visual Studio Code.
@@ -25,7 +25,8 @@ Este programa utiliza una estructura de datos dinamica (array) para manejar las 
       | gcc codigo.c arraylist.c -o programa |
 4. **Ejecutar Programa**
     - Usa en la misma terminal el siguiente comando : | ./programa |
-
+5. **Opcional**
+    - Entrar directamente al programa.exe , despues de extraer el archivo.
 
 
 El codigo tiene las siguientes Funcionalidades:
