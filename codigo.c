@@ -14,7 +14,7 @@ typedef struct {
     int prioridad; // 1: Alta, 2: Media, 3: Baja
 } stTicket;
 
-
+// Limpia la Pantalla, para Windows y Linux
 void limpiarPantalla()
 {
   #ifdef _WIN32
@@ -23,6 +23,8 @@ void limpiarPantalla()
     system("clear");
   #endif
 }
+//Transforma el string a un numero, si no es un numero devuelve false
+// Si es un numero devuelve true
 bool isNum(const char *str) {
     if (str == NULL || *str == '\0')
         return false;
@@ -43,20 +45,23 @@ void mostrarMenuPrincipal()
   puts("========================================");
 
   puts("1) Registrar ticket");
-  puts("2) Asignar prioridad a ticket");
+  puts("2) Asignar prioridad a un ticket");
   puts("3) Mostrar lista de ticket pendientes");
-  puts("4) Procesar siguiente ticket");
-  puts("5) Buscar ticket por ID y mostrar detalles");
+  puts("4) Procesar y pasar al siguiente ticket");
+  puts("5) Buscar ticket por ID ");
   puts("6) Salir");
 }
 
+// Asigna la fecha y hora actual al ticket
+// Se implementa usando la libreria time.h
 void FechaAsignada(stTicket *ticket)
 {
   time_t t;
   time(&t);
   strftime(ticket->fecha, sizeof(ticket->fecha), "%d/%m/%Y %H:%M:%S", localtime(&t));
 }
-
+/// Busca un ticket por ID y lo elimina de la lista
+/// Devuelve el ticket eliminado o NULL si no se encuentra
 stTicket* Buscar_Remover(List *lista, int id){
     stTicket *ticket = (stTicket *)first(lista);
     while (ticket != NULL)
@@ -70,7 +75,8 @@ stTicket* Buscar_Remover(List *lista, int id){
     }
     return NULL;
 }
-
+// Registra un nuevo ticket en la lista de tickets de baja prioridad
+// Se asigna la fecha y hora actual al ticket
 void registrar_ticket(List *ticket_Baja)
 {
     stTicket *nuevoTicket = (stTicket *)malloc(sizeof(stTicket));
@@ -107,7 +113,9 @@ void registrar_ticket(List *ticket_Baja)
     nuevoTicket->prioridad = 3; 
     pushBack(ticket_Baja, nuevoTicket);
 }
-
+// Definir la prioridad de un ticket existente
+// Busca el ticket por ID en las listas de alta, media y baja prioridad
+// Si lo encuentra, lo elimina de la lista actual y inserta a la nueva asignada.
 void definir_prio(List *ticket_Alta, List *ticket_Media, List *ticket_Baja)
 {
   int id;
@@ -154,7 +162,8 @@ void definir_prio(List *ticket_Alta, List *ticket_Media, List *ticket_Baja)
       break;
   }
 }
-
+// Muestra los tickets pendientes en cada lista
+// Ademas de la fecha y hora de creacion, de acuerdo a la prioridad
 void TicketsPendientes(List *ticket_Alta, List *ticket_Media, List *ticket_Baja)
 {
   printf("Tickets pendientes:\n");
@@ -180,6 +189,9 @@ void TicketsPendientes(List *ticket_Alta, List *ticket_Media, List *ticket_Baja)
     ticket = next(ticket_Baja);
   }
 }
+// Procesa el siguiente ticket de acuerdo a la prioridad
+// Se recorre la lista de alta, media y baja prioridad
+// Si se encuentra un ticket, se muestra y se elimina de la lista
 void Siguiente_Ticket(List *ticket_Alta, List *ticket_Media, List *ticket_Baja)
 {
   stTicket *ticket = (stTicket *)first(ticket_Alta);
@@ -217,6 +229,8 @@ void Siguiente_Ticket(List *ticket_Alta, List *ticket_Media, List *ticket_Baja)
     }
   }
 }
+// Busca un ticket por ID en las listas de alta, media y baja prioridad
+// Si lo encuentra, muestra los detalles del ticket
 void Buscar_Ticket(List *ticket_Alta, List *ticket_Media, List *ticket_Baja)
 {
   int id;
@@ -257,6 +271,7 @@ void Buscar_Ticket(List *ticket_Alta, List *ticket_Media, List *ticket_Baja)
   }
   printf("Ticket no encontrado.\n");
 }
+//Funcion auxiliar para que el usuario tenga tiempo de ver los resultados en pantalla.
 void Pausa()
 {
   printf("Presione Enter para continuar...\n");
